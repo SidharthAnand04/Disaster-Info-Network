@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Earthquake App{% endblock %}</title>
+  <style>
+    /* Minimal CSS styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; 
+      padding: 0;
+      background-color: #f5f5f5;
+      /* Remove any forced height or fix for the footer */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header, nav {
+      background-color: #333;
+      padding: 0.5rem;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: #fff;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      margin: 1rem;
+      padding: 1rem;
+      background-color: #fff;
+      /* Let main area expand, pushing footer downward if there is more content */
+      flex: 1;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #333;
+      color: #fff;
+      /* Remove position: fixed */
+      position: static;
+    }
+    h1, h2, h3 {
+      margin-top: 0;
+    }
+  </style>
+  {% block head %}{% endblock %}
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="/">Home</a>
+    <a href="{{ url_for('report_damage') }}">Report Damage</a>
+    <a href="{{ url_for('view_map') }}">View Map</a>
+  </nav>
+</header>
+
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+<footer>
+  &copy; 2025 Earthquake App
+</footer>
+
+</body>
+</html>
